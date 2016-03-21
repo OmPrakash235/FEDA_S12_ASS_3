@@ -1,0 +1,35 @@
+<!-- Sort the Session array by name using order by: sort order filter. -->
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<title>AngularJS Filters</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script type="text/javascript">
+			var module = angular.module('myApp', []);
+			module.controller('myCtrl', function($scope, $filter){
+				$scope.session = [
+					{sname : 'Session1 : Introduction'},
+					{sname : 'Session2 : HTML Tags'},
+					{sname : 'Session3 : CSS Properties'}
+				];
+			});
+		</script>
+	</head>
+	<body>
+		<div ng-controller="myCtrl">
+			<h3>Ascending Session order</h3>
+			<ul>
+				<li ng-repeat="s in session | orderBy : 'sname'">
+					{{s.sname}}
+				</li>
+			</ul>
+			<h3>Descending Session order</h3>
+			<ul>
+				<li ng-repeat="s in session | orderBy : 'sname' : true">
+					{{s.sname}}
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
